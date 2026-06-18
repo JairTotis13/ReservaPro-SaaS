@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-dark-900: #0A0A0A;
+  --color-dark-800: #0F0F0F;
+  --color-dark-700: #141414;
+  --color-dark-600: #1A1A1A;
+  --color-dark-500: #222222;
+  --color-dark-400: #2A2A2A;
+  --color-dark-300: #333333;
+  --color-dark-200: #444444;
+  --color-dark-100: #555555;
+  
+  --color-gold-500: #D4AF37;
+  --color-gold-400: #E0C04F;
+  --color-gold-300: #E8CC6A;
+  --color-gold-200: #F0D885;
+  --color-gold-100: #F7E5A0;
+  
+  --color-amber-500: #B8960F;
+  --color-amber-400: #C9A720;
+  
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-info: #3B82F6;
+  
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-dark-900);
+  color: #E5E5E5;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-700);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-200);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(212, 175, 55, 0.3);
+  color: #FFFFFF;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+/* Glass morphism utility */
+.glass {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-dark-500);
+}
+
+.glass-light {
+  background: rgba(34, 34, 34, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-dark-400);
+}
+
+/* Card styles */
+.card-dark {
+  background: var(--color-dark-600);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 0.75rem;
+}
+
+.card-dark:hover {
+  border-color: var(--color-dark-400);
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37, #F0D885, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold gradient button */
+.btn-gold {
+  background: linear-gradient(135deg, #B8960F, #D4AF37);
+  color: #0A0A0A;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #D4AF37, #E0C04F);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* Outline gold */
+.btn-outline-gold {
+  border: 1px solid var(--color-gold-500);
+  color: var(--color-gold-500);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--color-gold-400);
+}
+
+/* Input styles */
+.input-dark {
+  background: var(--color-dark-700);
+  border: 1px solid var(--color-dark-400);
+  color: #E5E5E5;
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.input-dark:focus {
+  border-color: var(--color-gold-500);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.input-dark::placeholder {
+  color: var(--color-dark-200);
+}
+
+/* Status badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-success {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22C55E;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-info {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3B82F6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Loading shimmer */
+.shimmer {
+  background: linear-gradient(90deg, var(--color-dark-600) 0%, var(--color-dark-400) 50%, var(--color-dark-600) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Calendar custom styles */
+.rdp-root {
+  --rdp-accent-color: var(--color-gold-500);
+  --rdp-background-color: var(--color-dark-700);
+  --rdp-day-width: 2.5rem;
+  --rdp-day-height: 2.5rem;
+}
+
+/* Activity grid for GitHub-style chart */
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(53, 1fr);
+  gap: 3px;
+}
+
+.activity-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  transition: transform 0.15s ease;
+}
+
+.activity-cell:hover {
+  transform: scale(1.5);
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
